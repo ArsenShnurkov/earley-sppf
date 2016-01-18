@@ -31,6 +31,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="Irony">
+      <HintPath>..\packages\deveel-irony.1.0.0.0\lib\net45\Irony.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Program.cs" />
@@ -39,21 +42,27 @@
     <Compile Include="sequence-of-characters\ISequenceOfCharacters.cs" />
     <Compile Include="sequence-of-characters\SeuqenceOfCharacters.cs" />
     <Compile Include="sequence-of-characters\Position.cs" />
-    <Compile Include="grammar\Terminal.cs" />
-    <Compile Include="grammar\NonTerminal.cs" />
-    <Compile Include="grammar\Grammar.cs" />
-    <Compile Include="grammar\EbnfExpression.cs" />
-    <Compile Include="grammar\Production.cs" />
     <Compile Include="jay-earley\StateOfProduction.cs" />
     <Compile Include="ExampleGrammar.cs" />
     <Compile Include="sequence-of-characters\ICharacter.cs" />
     <Compile Include="sequence-of-characters\Character.cs" />
-    <Compile Include="grammar\ISymbol.cs" />
+    <Compile Include="syntax-tree\Node.cs" />
+    <Compile Include="syntax-tree\Match.cs" />
+    <Compile Include="bnf-grammar\Terminal.cs" />
+    <Compile Include="bnf-grammar\NonTerminal.cs" />
+    <Compile Include="bnf-grammar\Grammar.cs" />
+    <Compile Include="bnf-grammar\Production.cs" />
+    <Compile Include="bnf-grammar\RewriteRule.cs" />
+    <Compile Include="bnf-grammar\ISymbol.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
     <Folder Include="sequence-of-characters\" />
-    <Folder Include="grammar\" />
     <Folder Include="jay-earley\" />
+    <Folder Include="syntax-tree\" />
+    <Folder Include="bnf-grammar\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
 </Project>

@@ -3,10 +3,10 @@ using System.Collections.Generic;
 
 namespace test1
 {
-	public class EbnfExpression
+	public class RewriteRule
 	{
 		List<ISymbol> symbols = new List<ISymbol>();
-		public EbnfExpression (params ISymbol[] symbols)
+		public RewriteRule (params ISymbol[] symbols)
 		{
 			foreach (var s in symbols) {
 				this.symbols.Add (s);

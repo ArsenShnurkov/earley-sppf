@@ -8,13 +8,13 @@ namespace test1
 	/// </remarks>
 	public class Production
 	{
-		public Production (NonTerminal t, EbnfExpression e)
+		public Production (NonTerminal t, RewriteRule e)
 		{
 			this.LeftPart = t;
 			this.RightPart = e;
 		}
 		public NonTerminal LeftPart { get; set;}
-		public EbnfExpression RightPart { get; set;}
+		public RewriteRule RightPart { get; set;}
 	}
 }
 

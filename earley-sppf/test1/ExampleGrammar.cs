@@ -29,11 +29,11 @@ namespace test1
 			this.terminals.Add (a);
 			this.terminals.Add (plus);
 			this.terminals.Add (star);
-			Production E1 = new Production (E, new EbnfExpression(T));
-			Production E2 = new Production (E, new EbnfExpression(E, plus, T));
-			Production T1 = new Production (T, new EbnfExpression(P));
-			Production T2 = new Production (T, new EbnfExpression(T, star, P));
-			Production P1 = new Production (P, new EbnfExpression(a));
+			Production E1 = new Production (E, new RewriteRule(T));
+			Production E2 = new Production (E, new RewriteRule(E, plus, T));
+			Production T1 = new Production (T, new RewriteRule(P));
+			Production T2 = new Production (T, new RewriteRule(T, star, P));
+			Production P1 = new Production (P, new RewriteRule(a));
 			this.rules.Add (E1);
 			this.rules.Add (E2);
 			this.rules.Add (T1);

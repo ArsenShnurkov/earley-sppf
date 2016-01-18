@@ -9,6 +9,7 @@ namespace test1
 	/// Sigma the set of terminal symbols,
 	/// P a finite set of productions, and
 	/// S the start symbol.
+	/// (q) J. M. 1. M. Leo, 2. Informal Description
 	/// </summary>
 	public class Grammar
 	{
