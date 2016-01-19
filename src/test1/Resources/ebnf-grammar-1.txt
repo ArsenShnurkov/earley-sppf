@@ -1,0 +1,9 @@
+﻿ebnf-grammar-1.ebnf
+
+Unexpected grammar contains error(s):
+Shift-reduce conflict. State S92, lookaheads [']. Selected shift as preferred action. (S92)
+Shift-reduce conflict. State S112, lookaheads ["]. Selected shift as preferred action. (S112)
+Shift-reduce conflict. State S116, lookaheads [| comma]. Selected shift as preferred action. (S116)
+Shift-reduce conflict. State S117, lookaheads [| comma]. Selected shift as preferred action. (S117)
+Shift-reduce conflict. State S119, lookaheads [']. Selected shift as preferred action. (S119)
+Shift-reduce conflict. State S122, lookaheads ["]. Selected shift as preferred action. (S122)

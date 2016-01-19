@@ -2,40 +2,41 @@
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
     <ProjectGuid>{94BBAD59-F350-483D-85E1-2A74E1A0DD21}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <RootNamespace>test1</RootNamespace>
     <AssemblyName>test1</AssemblyName>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Externalconsole>true</Externalconsole>
+    <LangVersion>6</LangVersion>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <LangVersion>6</LangVersion>
+    <StartupObject>Globals</StartupObject>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <Externalconsole>false</Externalconsole>
     <OutputPath>bin\Debug</OutputPath>
+    <Optimize>false</Optimize>
     <DefineConstants>DEBUG;</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <Externalconsole>true</Externalconsole>
-    <LangVersion>6</LangVersion>
+    <DebugSymbols>true</DebugSymbols>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
-    <Optimize>true</Optimize>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <Externalconsole>false</Externalconsole>
     <OutputPath>bin\Release</OutputPath>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <Externalconsole>true</Externalconsole>
-    <LangVersion>6</LangVersion>
+    <Optimize>false</Optimize>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="Irony">
       <HintPath>..\packages\deveel-irony.1.0.0.0\lib\net45\Irony.dll</HintPath>
     </Reference>
+    <Reference Include="Eto.Parse">
+      <HintPath>..\packages\Eto.Parse.1.4.0\lib\net45\Eto.Parse.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="sequence-of-characters\IPosition.cs" />
     <Compile Include="sequence-of-characters\ISequenceOfCharacters.cs" />
@@ -54,6 +55,8 @@
     <Compile Include="bnf-grammar\RewriteRule.cs" />
     <Compile Include="bnf-grammar\ISymbol.cs" />
     <Compile Include="EbnfGrammar.cs" />
+    <Compile Include="Globals.cs" />
+    <Compile Include="Globals.Helpers.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -61,8 +64,15 @@
     <Folder Include="jay-earley\" />
     <Folder Include="syntax-tree\" />
     <Folder Include="bnf-grammar\" />
+    <Folder Include="Resources\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+    <None Include="Resources\ebnf-grammar-1.txt" />
+    <None Include="Resources\ebnf-grammar-2.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\ebnf-grammar-1.ebnf" />
+    <EmbeddedResource Include="Resources\ebnf-grammar-2.ebnf" />
   </ItemGroup>
 </Project>

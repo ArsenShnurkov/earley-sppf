@@ -1,0 +1,7 @@
+﻿Things what was added in comparison with wikipedia's grammar:
+
+1) (**) comments
+2) ? ... ? extensions
+3) \x000D ansi sequences in terminals
+4) := assignment in addition to =
+5) - operation
