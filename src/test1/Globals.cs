@@ -8,7 +8,7 @@ partial class Globals
 {
 	public static void Main (string[] args)
 	{
-		var fileContent = LoadFromResource(nameof(test1), "Resources", "ebnf-grammar-2.ebnf");
+		var fileContent = LoadFromResource(nameof(test1), "Resources", "ebnf-grammar-3.ebnf");
 		ParseWithEtoParse (fileContent, fileContent);
 #if false
 		// test1.Resources.ebnf-grammar-1.ebnf

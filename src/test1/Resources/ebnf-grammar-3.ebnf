@@ -13,6 +13,7 @@ rhs := identifier
      | rhs , [ws] , "," , [ws] , rhs
      | rhs , [ws] , "-" , [ws] , rhs
      | extension
+     | integer, [ws] , "*", [ws] , rhs
      ;
 
 identifier := letter , { letter | digit | "_" } ;
@@ -22,8 +23,10 @@ terminal_element2 = character | escape_seq | dquote;
 terminal := quote , terminal_element2, { terminal_element2 } , quote
          | dquote , terminal_element1, { terminal_element1} , dquote ;
 
+integer := digit, {digit};
+
 character := letter | digit | symbol ;
-escape_seq := backslash, "x", digit_hex, {digit_hex} ;
+escape_seq := backslash, "x", 4 * [digit_hex] ;
 
 extension_unit := (ac - '?');
 extension := "?" , extension_unit , { extension_unit } , "?";
