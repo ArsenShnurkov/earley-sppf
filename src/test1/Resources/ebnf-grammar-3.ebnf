@@ -1,0 +1,74 @@
+﻿grammar := { [ws], rule }, [ws] ;
+
+rule := lhs, [ws], ( "=" | ":=" ) , [ws], rhs , [ws] , ";";
+
+lhs := identifier;
+
+rhs := identifier
+     | terminal
+     | "[" , [ws] , rhs , [ws] , "]"
+     | "{" , [ws] , rhs , [ws] , "}"
+     | "(" , [ws] , rhs , [ws] , ")"
+     | rhs , [ws] , "|" , [ws] , rhs
+     | rhs , [ws] , "," , [ws] , rhs
+     | rhs , [ws] , "-" , [ws] , rhs
+     | extension
+     ;
+
+identifier := letter , { letter | digit | "_" } ;
+
+terminal_element1 = character | escape_seq | quote;
+terminal_element2 = character | escape_seq | dquote;
+terminal := quote , terminal_element2, { terminal_element2 } , quote
+         | dquote , terminal_element1, { terminal_element1} , dquote ;
+
+character := letter | digit | symbol ;
+escape_seq := backslash, "x", digit_hex, {digit_hex} ;
+
+extension_unit := (ac - '?');
+extension := "?" , extension_unit , { extension_unit } , "?";
+
+comment_start := "(*" ;
+comment_unit_1 := ( ac - "*" ) ;
+comment_unit_2 := ( ac - ")" ) ;
+comment_unit := "*", comment_unit_2 | comment_unit_1;
+comment_end := "*)" ;
+comment := comment_start , { comment_unit }, comment_end ;
+
+symbol := "[" | "]" | "{" | "}" | "(" | ")" | "<" | ">"
+       | "=" | "|" | "." | "," | ";"
+       | "*" | ":" | "-" | "?" | "_"
+       ;
+
+tab := "\x0009" ;
+lf := "\x000A" ;
+cr := "\x000D" ;
+space := "\x0020" ;
+dquote := "\x0022" ;
+quote := "\x0027" ;
+backslash := "\x005C" ;
+eol := ? Terminals.Eol ? ;
+ac := ? Terminals.AnyChar ? ;
+
+space_or_tab := ( space | tab ) ;
+line_separator_raw := ( cr, lf ) | cr | lf ;
+sp := space_or_tab, {space_or_tab} ;
+sp_with_linebreak_raw := line_separator_raw | comment ;
+ws_unit := space_or_tab | sp_with_linebreak_raw;
+ws := ws_unit, {ws_unit} ;
+
+letter := "A" | "B" | "C" | "D" | "E" | "F" | "G"
+       | "H" | "I" | "J" | "K" | "L" | "M" | "N"
+       | "O" | "P" | "Q" | "R" | "S" | "T" | "U"
+       | "V" | "W" | "X" | "Y" | "Z" | "a" | "b"
+       | "c" | "d" | "e" | "f" | "g" | "h" | "i"
+       | "j" | "k" | "l" | "m" | "n" | "o" | "p"
+       | "q" | "r" | "s" | "t" | "u" | "v" | "w"
+       | "x" | "y" | "z" ;
+
+digit := "0" | "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9" ;
+
+digit_hex := digit 
+		| "A" | "B" | "C" | "D" | "E" | "F"
+		| "a" | "b" | "c" | "d" | "e" | "f"
+		;

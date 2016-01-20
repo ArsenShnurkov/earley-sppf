@@ -1,0 +1,1 @@
+﻿The idea is to add "*" operation to syntax

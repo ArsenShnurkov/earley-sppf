@@ -70,9 +70,11 @@
     <None Include="packages.config" />
     <None Include="Resources\ebnf-grammar-1.txt" />
     <None Include="Resources\ebnf-grammar-2.txt" />
+    <None Include="Resources\ebnf-grammar-3.txt" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resources\ebnf-grammar-1.ebnf" />
     <EmbeddedResource Include="Resources\ebnf-grammar-2.ebnf" />
+    <EmbeddedResource Include="Resources\ebnf-grammar-3.ebnf" />
   </ItemGroup>
 </Project>
