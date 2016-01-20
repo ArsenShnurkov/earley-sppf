@@ -76,5 +76,6 @@
     <EmbeddedResource Include="Resources\ebnf-grammar-1.ebnf" />
     <EmbeddedResource Include="Resources\ebnf-grammar-2.ebnf" />
     <EmbeddedResource Include="Resources\ebnf-grammar-3.ebnf" />
+    <EmbeddedResource Include="Resources\ebnf-grammar-3-rewrite-test.ebnf" />
   </ItemGroup>
 </Project>

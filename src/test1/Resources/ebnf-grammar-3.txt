@@ -1,1 +1,3 @@
 ﻿The idea is to add "*" operation to syntax
+
+empty_sequence added

@@ -1,6 +1,18 @@
-﻿grammar := { [ws], rule }, [ws] ;
+﻿(*grammar := { [ws], rule }, [ws] ;*)
+grammar_part1a := (*brick1*)ws | empty_sequence ;
+grammar_part1b := (*brick3*)ws | empty_sequence ;
+grammar_part2 := grammar_part1a, (*brick2*)rule;
+grammar_part3 := grammar_part2, grammar_part3 | empty_sequence ;
+grammar := grammar_part3, grammar_part1b;
 
-rule := lhs, [ws], ( "=" | ":=" ) , [ws], rhs , [ws] , ";";
+(*rule := lhs, [ws], ( "=" | ":=" ) , [ws], rhs , [ws] , ";";*)
+rule_part1 := (*brick2*)ws | empty_sequence ;
+rule_part2 := ":=" 
+	| "=" 
+	;
+rule_part3 := (*brick5*)ws | empty_sequence ;
+rule_part4 := (*brick7*)ws | empty_sequence ;
+rule := lhs, rule_part1, rule_part2 , rule_part3, rhs , rule_part4 , ";";
 
 lhs := identifier;
 
@@ -23,8 +35,8 @@ alternative := rhs , [ws] , "|" , [ws] , rhs;
 
 identifier := letter , { letter | digit | "_" } ;
 
-terminal_element1 = character | escape_seq | quote;
-terminal_element2 = character | escape_seq | dquote;
+terminal_element1 := character | escape_seq | quote;
+terminal_element2 := character | escape_seq | dquote;
 terminal := quote , terminal_element2, { terminal_element2 } , quote
          | dquote , terminal_element1, { terminal_element1} , dquote ;
 
@@ -43,7 +55,7 @@ comment_unit := "*", comment_unit_2 | comment_unit_1;
 comment_end := "*)" ;
 comment := comment_start , { comment_unit }, comment_end ;
 
-empty_sequence = ;
+empty_sequence := ;
 
 symbol := "[" | "]" | "{" | "}" | "(" | ")" | "<" | ">"
        | "=" | "|" | "." | "," | ";"
